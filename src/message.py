@@ -16,17 +16,17 @@ class Message:
             print(content)
         return content
 
-    def send_email(self):
-        message = MIMEMultipart()
-        message['From'] = self.sender
-        message['To'] = self.receiver
-        message['Subject'] = 'price reached target'
+    # def send_email(self):
+    #     message = MIMEMultipart()
+    #     message['From'] = self.sender
+    #     message['To'] = self.receiver
+    #     message['Subject'] = 'price reached target'
 
-        body = self.read_csv(file_path='src/prices.csv')
+    #     body = self.read_csv(file_path='src/prices.csv')
         
-        server = smtplib.SMTP('smtp.office365.com', 587)
-        server.starttls()
-        server.login(self.sender, self.password)
-        server.sendmail(self.sender, self.receiver, body)
-        server.quit()
+    #     server = smtplib.SMTP('smtp.office365.com', 587)
+    #     server.starttls()
+    #     server.login(self.sender, self.password)
+    #     server.sendmail(self.sender, self.receiver, body)
+    #     server.quit()
 

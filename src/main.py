@@ -1,8 +1,8 @@
 
-
+from ast import Return
 from selenium import webdriver
-# from datetime import datetime
-# from message import Message
+from datetime import datetime
+from message import Message
 
 def get_driver():
     options = webdriver.ChromeOptions()
@@ -36,10 +36,12 @@ def detector(number):
     number2 = number - number1
 
     if number < number2:
-        return f'Price is below 1%: {number:.2f}'
+        print(f'Price is below 1%: {number:.2f},- {number2:.2f}')
+        return f'Price is below 1%: {number:.2f}, - {number2:.2f}'
         #save_result(f'Price is below 1%: {number2:.2f}')
     else:
-        save_result( f'Price is above 1%: {number2:.2f}')
+        print(f'Price is above 1%: {number:.2f} - {number2:.2f}')
+        save_result( f'Price is above 1%: {number:.2f} - {number2:.2f}')
 
 
 def main():
