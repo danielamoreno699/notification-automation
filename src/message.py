@@ -10,23 +10,31 @@ class Message:
         self.receiver = receiver
         self.password = password
 
-    def  read_csv(self, file_path):
+    def  read_csv(self, file_path='src/prices.csv'):
         with open(file_path, 'r') as file:
-            content = file.readlines()
+            content = file.read()
             print(content)
         return content
 
-    # def send_email(self):
-    #     message = MIMEMultipart()
-    #     message['From'] = self.sender
-    #     message['To'] = self.receiver
-    #     message['Subject'] = 'price reached target'
 
-    #     body = self.read_csv(file_path='src/prices.csv')
-        
-    #     server = smtplib.SMTP('smtp.office365.com', 587)
-    #     server.starttls()
-    #     server.login(self.sender, self.password)
-    #     server.sendmail(self.sender, self.receiver, body)
-    #     server.quit()
+    def send_email(self):
+        message = MIMEMultipart()
+        message['From'] = self.sender
+        message['To'] = self.receiver
+        message['Subject'] = 'Price Reached Target'
 
+        body = self.read_csv()
+
+        # Create an HTML message with the content from the CSV
+        email_message = MIMEText(body, 'html')
+        message.attach(email_message)
+
+        server = smtplib.SMTP('smtp.office365.com', 587)
+        server.starttls()
+        server.login(self.sender, self.password)
+        server.sendmail(self.sender, self.receiver, message.as_string())
+        print('Email sent')
+        server.quit()
+
+message1 = Message('danielatest123@outlook.es', 'danielamoreno699@gmail.com', 'danielatestpython123456')
+message1.send_email()
