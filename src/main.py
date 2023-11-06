@@ -1,9 +1,8 @@
 
 
-from ast import Return
 from selenium import webdriver
-from datetime import datetime
-from message import Message
+# from datetime import datetime
+# from message import Message
 
 def get_driver():
     options = webdriver.ChromeOptions()
@@ -49,11 +48,10 @@ def main():
     element_text = element.text
     float_element = convert_to_float(element_text)
     detector(float_element)
-    #detector1 = detector(float_element)
-    message_instance = Message('danielatest123@outlook.es', 'danielamoreno699@gmail.com', 'danielatestpython123456')
-    message_instance.send_email()
-    #return detector1
-    #print(float_element)
+   
+    # message_instance = Message('danielatest123@outlook.es', 'danielamoreno699@gmail.com', 'danielatestpython123456')
+    # message_instance.send_email()
+   
 
 
 print(main())

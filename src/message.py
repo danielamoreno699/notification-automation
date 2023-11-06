@@ -10,8 +10,8 @@ class Message:
         self.receiver = receiver
         self.password = password
 
-    def  read_csv():
-        with open('src/prices.csv', 'r') as file:
+    def  read_csv(self, file_path):
+        with open(file_path, 'r') as file:
             content = file.readlines()
             print(content)
         return content
@@ -22,7 +22,7 @@ class Message:
         message['To'] = self.receiver
         message['Subject'] = 'price reached target'
 
-        body = self.read_csv()
+        body = self.read_csv(file_path='src/prices.csv')
         
         server = smtplib.SMTP('smtp.office365.com', 587)
         server.starttls()
